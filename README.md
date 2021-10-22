@@ -1,4 +1,4 @@
-# pokedex
+# pokedex by Chroma <img src='https://veekun.com/dex/media/pokemon/global-link/1.png' height=50px/>
 
 a pokedex to learn Next.js
 
