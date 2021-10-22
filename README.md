@@ -10,3 +10,7 @@ a pokedex to learn Next.js
 - [x] dynamic page for each pokemon
 - [ ] Do css
 - [ ] list type and all spec
+
+# Bot discord
+
+- [ ] research pokemon command
