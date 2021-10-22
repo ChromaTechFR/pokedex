@@ -6,5 +6,7 @@ a pokedex to learn Next.js
 
 # Process
 
-- [ ] static home page ( list pokemon )
-- [ ] dynamic page for each pokemon
+- [x] static home page ( list pokemon )
+- [x] dynamic page for each pokemon
+- [ ] Do css
+- [ ] list type and all spec
