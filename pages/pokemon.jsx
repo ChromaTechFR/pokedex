@@ -11,7 +11,7 @@ export default function pokemon({ pokemon }) {
           <link rel='icon' href='/favicon.ico' />
           <meta
             name='description'
-            content={`${pokemon.name} | ${pokemon.height}/${pokemon.weight}`}
+            content={`${pokemon.name} | height:${pokemon.height}/weigth${pokemon.weight}`}
           />
           <title>
             pokedex {pokemon.name} | n.{pokemon.id}
