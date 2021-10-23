@@ -7,20 +7,29 @@ export default function Home({ pokemon }) {
       <Head>
         <title>pokedex</title>
         <meta name='description' content='Pokedex made with next.js' />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='./favicon.ico' />
         <meta property='og:image' content='/pokeball.jpg' />
       </Head>
 
       <main>
-        <h1>Pokedex</h1>
-        <ul>
+        <h1 className='flex justify-center text-7xl'>Pokedex</h1>
+
+        <ul className='box-border'>
           {pokemon.map((result, index) => {
             return (
-              <li key={index}>
+              <li key={index} className='inline-flex border-2'>
                 <Link href={`/pokemon?id=${index + 1}`}>
                   <a>
-                    <img src={result.image} alt={result.name} />
-                    <span>{index + 1}</span> {result.name}
+                    <img
+                      src={result.image}
+                      alt={result.name}
+                      className='w-64 h-64'
+                    />
+                    <div className='flex justify-center'>
+                      <span className='text-gray-400 mr-1'>n.{index + 1} </span>
+                      {" | "}
+                      {result.name}
+                    </div>
                   </a>
                 </Link>
               </li>
