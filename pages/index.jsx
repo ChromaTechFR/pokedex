@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export default function Home({ pokemon }) {
+  console.log(pokemon);
   return (
     <div>
       <Head>
@@ -12,7 +14,7 @@ export default function Home({ pokemon }) {
       </Head>
 
       <main>
-        <h1 className='title'>Pokedex</h1>
+        <Navbar pokemon={pokemon} />
         <ul className='wrapper'>
           {pokemon.map((result, index) => {
             return (
@@ -47,6 +49,7 @@ export async function getStaticProps(context) {
       return {
         ...result,
         image,
+        index,
       };
     });
     return {

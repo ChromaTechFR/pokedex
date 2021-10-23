@@ -1,0 +1,35 @@
+img {
+  width: 64px;
+}
+
+nav {
+  width: 750px;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  justify-content: space-between;
+  display: flex;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  input {
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    height: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: black;
+    background-color: rgba(94, 166, 207, 0.521);
+  }
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}

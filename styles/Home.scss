@@ -12,6 +12,8 @@
 }
 
 .pokemon-card {
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 10px;
   width: 250px;
   list-style: none;
@@ -46,6 +48,6 @@
 }
 
 .pokemon-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.02) translateY(10px);
   border-color: royalblue;
 }
