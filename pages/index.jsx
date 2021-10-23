@@ -12,21 +12,16 @@ export default function Home({ pokemon }) {
       </Head>
 
       <main>
-        <h1 className='flex justify-center text-7xl'>Pokedex</h1>
-
-        <ul className='box-border'>
+        <h1 className='title'>Pokedex</h1>
+        <ul className='wrapper'>
           {pokemon.map((result, index) => {
             return (
-              <li key={index} className='inline-flex border-2'>
+              <li key={index} className='pokemon-card'>
                 <Link href={`/pokemon?id=${index + 1}`}>
                   <a>
-                    <img
-                      src={result.image}
-                      alt={result.name}
-                      className='w-64 h-64'
-                    />
-                    <div className='flex justify-center'>
-                      <span className='text-gray-400 mr-1'>n.{index + 1} </span>
+                    <img src={result.image} alt={result.name} />
+                    <div className='info'>
+                      <span>n.{index + 1} </span>
                       {" | "}
                       {result.name}
                     </div>
