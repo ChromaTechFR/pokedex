@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function Navbar({ pokemon }) {
   const [term, setTerm] = useState("");
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
 
   return (
     <>
@@ -27,30 +27,32 @@ export default function Navbar({ pokemon }) {
         </div>
       </nav>
       {modal && (
-        <div>
-          <ul>
-            {term === "" ? (
-              <p>commencer a rechercher</p>
-            ) : (
-              pokemon
-                .filter((p) =>
-                  p.name?.toLowerCase().includes(term.toLowerCase())
-                )
-                .map((result, index) => {
-                  console.log(result);
-                  return (
-                    <li
-                      key={index}
-                      onClick={() => {
-                        window.location.href = `/pokemon?id=${result.index}`;
-                      }}>
-                      {result.name}
-                    </li>
-                  );
-                })
-            )}
-          </ul>
-        </div>
+        <>
+          <div className='modal'>
+            <ul>
+              {term === "" ? (
+                <p>commencer a rechercher</p>
+              ) : (
+                pokemon
+                  .filter((p) =>
+                    p.name?.toLowerCase().includes(term.toLowerCase())
+                  )
+                  .map((result, index) => {
+                    console.log(result);
+                    return (
+                      <li
+                        key={index}
+                        onClick={() => {
+                          window.location.href = `/pokemon?id=${result.index}`;
+                        }}>
+                        {result.name}
+                      </li>
+                    );
+                  })
+              )}
+            </ul>
+          </div>
+        </>
       )}
     </>
   );
