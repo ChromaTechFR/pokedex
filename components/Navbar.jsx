@@ -29,6 +29,9 @@ export default function Navbar({ pokemon }) {
       {modal && (
         <>
           <div className='modal'>
+            <span className='cross' onClick={() => setModal(false)}>
+              &#10005;
+            </span>
             <ul>
               {term === "" ? (
                 <p>commencer a rechercher</p>

@@ -35,6 +35,12 @@ nav {
 }
 
 .modal {
+  .cross {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+  }
   width: 300px;
   border-radius: 20px;
   background-color: rgb(94, 166, 207);
