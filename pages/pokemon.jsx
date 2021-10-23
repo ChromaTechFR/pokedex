@@ -8,7 +8,7 @@ export default function pokemon({ pokemon }) {
       <div>
         <Head>
           <meta property='og:image' content={pokemon.image} />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='./favicon.ico' />
           <meta
             name='description'
             content={`${pokemon.name} | height:${pokemon.height}/weigth${pokemon.weight}`}
