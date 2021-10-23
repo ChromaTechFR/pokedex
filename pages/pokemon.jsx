@@ -22,6 +22,19 @@ export default function pokemon({ pokemon }) {
             <img src={pokemon.image} alt={pokemon.name} />
             <p>{pokemon.name}</p>
           </div>
+          {pokemon.types.map((type, index) => {
+            return <p key={index}>{type.type.name}</p>;
+          })}
+
+          <ul>
+            {pokemon.stats.map((stat, index) => {
+              return (
+                <li key={index}>
+                  {stat.base_stat} {stat.stat.name}
+                </li>
+              );
+            })}
+          </ul>
           <Link href='/'>
             <a>Home page</a>
           </Link>
