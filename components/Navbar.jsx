@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function Navbar({ pokemon }) {
   const [term, setTerm] = useState("");
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   return (
     <>
