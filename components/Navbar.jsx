@@ -46,7 +46,9 @@ export default function Navbar({ pokemon }) {
                       <li
                         key={index}
                         onClick={() => {
-                          window.location.href = `/pokemon?id=${result.index}`;
+                          window.location.href = `/pokemon?id=${
+                            result.index + 1
+                          }`;
                         }}>
                         {result.name}
                       </li>
