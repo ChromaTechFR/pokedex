@@ -3,6 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function pokemon({ pokemon }) {
+  console.log(pokemon);
   return (
     <>
       <div>
@@ -11,7 +12,7 @@ export default function pokemon({ pokemon }) {
           <link rel='icon' href='./favicon.ico' />
           <meta
             name='description'
-            content={`${pokemon.name} | height:${pokemon.height}/weigth${pokemon.weight}`}
+            content={`${pokemon.name} | height:${pokemon.height}/weigth:${pokemon.weight}`}
           />
           <title>
             pokedex {pokemon.name} | n.{pokemon.id}
