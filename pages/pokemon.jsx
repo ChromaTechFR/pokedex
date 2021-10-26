@@ -18,26 +18,37 @@ export default function pokemon({ pokemon }) {
           </title>
         </Head>
         <main>
-          <div>
-            <img src={pokemon.image} alt={pokemon.name} />
-            <p>{pokemon.name}</p>
+          <div className='wrapper-pokemon'>
+            <div className='left-pokemon'>
+              <img src={pokemon.image} alt={pokemon.name} />
+              <p>{pokemon.name}</p>
+            </div>
+            <div className='right-pokemon'>
+              <div className='type'>
+                <h2>Type:</h2>
+                {pokemon.types.map((type, index) => {
+                  return <p key={index}>{type.type.name}</p>;
+                })}
+              </div>
+              <div className='spec'>
+                <h2>Spec:</h2>
+                <ul>
+                  {pokemon.stats.map((stat, index) => {
+                    return (
+                      <li key={index}>
+                        {stat.base_stat} {stat.stat.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
           </div>
-          {pokemon.types.map((type, index) => {
-            return <p key={index}>{type.type.name}</p>;
-          })}
-
-          <ul>
-            {pokemon.stats.map((stat, index) => {
-              return (
-                <li key={index}>
-                  {stat.base_stat} {stat.stat.name}
-                </li>
-              );
-            })}
-          </ul>
-          <Link href='/'>
-            <a>Home page</a>
-          </Link>
+          <div className='home'>
+            <Link href='/'>
+              <a>Home page</a>
+            </Link>
+          </div>
         </main>
       </div>
     </>
