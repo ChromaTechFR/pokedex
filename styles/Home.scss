@@ -1,8 +1,21 @@
+.filter,
 .wrapper {
   margin-left: 50%;
   transform: translateX(-42%);
   display: inline-flex;
   flex-wrap: wrap;
+}
+
+.filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  span {
+    margin-right: 10px;
+  }
+  input,
+  label {
+    margin-right: 10px;
+  }
 }
 
 .pokemon-card {
