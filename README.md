@@ -9,7 +9,8 @@ a pokedex to learn Next.js
 - [x] static home page ( list pokemon )
 - [x] dynamic page for each pokemon
 - [ ] Do css
-- [ ] list type and all spec
+- [ ] router for slug filter
+- [x] list type and all spec
 
 # Bot discord
 
