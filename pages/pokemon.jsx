@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 
-export default function pokemon({ pokemon, pokeman }) {
+export default function pokemon({ pokemon, pokeman_f }) {
   return (
     <>
       {pokemon ? (
@@ -56,9 +56,18 @@ export default function pokemon({ pokemon, pokeman }) {
       ) : (
         <>
           <Navbar />
-          {pokeman.map((poke, index) => {
-            return <p key={index}>{poke}</p>;
-          })}
+          <ul>
+            {pokeman_f.map((poke, index) => {
+              return (
+                <li key={index}>
+                  <img src={poke.image} alt='' />
+                  <p>
+                    {poke.name} | n.{poke.id}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
         </>
       )}
     </>
@@ -68,6 +77,7 @@ export default function pokemon({ pokemon, pokeman }) {
 export async function getServerSideProps({ query }) {
   const id = query.id;
   const filter = query.type;
+  const filterarr = filter.split(" ");
 
   if (id) {
     try {
@@ -84,27 +94,42 @@ export async function getServerSideProps({ query }) {
     }
   } else {
     try {
-      const filterarr = filter.split(" ");
-      const HandleType = async () => {
-        let arr = [];
-        for await (const typepoke of filterarr) {
-          const response = await fetch(
-            `https://pokeapi.co/api/v2/type/${typepoke}`
-          );
-          const type = await response.json();
-          for await (const poke of type.pokemon) {
-            arr.push(poke.pokemon.name);
+      const pokemonFiltered = async () => {
+        const pokeman_arr = [];
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
+        const { results } = await res.json();
+
+        const pokemonFilter = results.map((result, index) => {
+          const formatedIndex = ("00" + (index + 1)).slice(-3);
+          const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatedIndex}.png`;
+          return {
+            ...result,
+            image,
+            index,
+          };
+        });
+
+        for await (const type of filterarr) {
+          for await (const pokeman of pokemonFilter) {
+            const res = await fetch(
+              `https://pokeapi.co/api/v2/pokemon/${pokeman.name}`
+            );
+            const pokemanInfo = await res.json();
+            const types = pokemanInfo.types[0].type.name;
+            if (types.includes(type)) {
+              pokemanInfo.image = pokeman.image;
+              pokeman_arr.push(pokemanInfo);
+            }
           }
-          arr;
+          return pokeman_arr;
         }
-        return arr;
       };
 
-      const pokeman = await HandleType();
-      console.log(pokeman);
+      const pokeman_f = await pokemonFiltered();
+      console.log(pokeman_f);
 
       return {
-        props: { pokeman },
+        props: { pokeman_f },
       };
     } catch (error) {
       console.log(error);
