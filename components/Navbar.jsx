@@ -4,6 +4,18 @@ export default function Navbar({ pokemon }) {
   const [term, setTerm] = useState("");
   const [modal, setModal] = useState(false);
 
+  const [filter, setFilter] = useState([]);
+
+  const HandleFilter = (e) => {
+    const filterInput = e.target;
+    if (filter.includes(filterInput.name)) {
+      setFilter(filter.filter((type) => type !== filterInput.name));
+    } else {
+      setFilter((prev) => [...prev, filterInput.name]);
+    }
+  };
+  console.log(filter);
+
   return (
     <>
       <nav>
@@ -26,6 +38,23 @@ export default function Navbar({ pokemon }) {
           />
         </div>
       </nav>
+      <div className='filter'>
+        <span>Type</span>
+        <label htmlFor='bug'>bug</label>
+        <input
+          type='checkbox'
+          id='filter'
+          name='bug'
+          onClick={(e) => HandleFilter(e)}
+        />
+        <label htmlFor='fire'>fire</label>
+        <input
+          type='checkbox'
+          name='fire'
+          id='filter'
+          onClick={(e) => HandleFilter(e)}
+        />
+      </div>
       {modal && (
         <>
           <div className='modal'>

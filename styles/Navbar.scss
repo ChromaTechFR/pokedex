@@ -11,7 +11,17 @@ nav {
   justify-content: space-between;
   display: flex;
 }
-
+.filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  span {
+    margin-right: 10px;
+  }
+  input,
+  label {
+    margin-right: 10px;
+  }
+}
 .right {
   display: flex;
   justify-content: flex-end;

@@ -110,6 +110,7 @@ export async function getServerSideProps({ query }) {
         });
 
         for await (const type of filterarr) {
+          console.log(type);
           for await (const pokeman of pokemonFilter) {
             const res = await fetch(
               `https://pokeapi.co/api/v2/pokemon/${pokeman.name}`
@@ -121,12 +122,11 @@ export async function getServerSideProps({ query }) {
               pokeman_arr.push(pokemanInfo);
             }
           }
-          return pokeman_arr;
         }
+        return pokeman_arr;
       };
 
       const pokeman_f = await pokemonFiltered();
-      console.log(pokeman_f);
 
       return {
         props: { pokeman_f },
