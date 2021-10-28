@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 
-export default function Home({ pokemon }) {
+export default function Index({ pokemon }) {
   const [filter, setFilter] = useState([]);
 
   const HandleFilter = (e) => {
