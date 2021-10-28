@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 
-export default function pokemon({ pokemon, pokeman_f }) {
+export default function pokemon({ pokemon, pokeman_f, filter }) {
   return (
     <>
       {pokemon ? (
@@ -55,6 +55,12 @@ export default function pokemon({ pokemon, pokeman_f }) {
         </div>
       ) : (
         <>
+          <Head>
+            <meta property='og:image' />
+            <link rel='icon' href='./favicon.ico' />
+            <meta name='description' content={`pokemon filter by ${filter}`} />
+            <title>pokemon {filter}</title>
+          </Head>
           <Navbar />
           <ul>
             {pokeman_f.map((poke, index) => {
@@ -129,7 +135,7 @@ export async function getServerSideProps({ query }) {
       const pokeman_f = await pokemonFiltered();
 
       return {
-        props: { pokeman_f },
+        props: { pokeman_f, filter },
       };
     } catch (error) {
       console.log(error);
