@@ -69,4 +69,4 @@ export async function getServerSideProps({ query }) {
   } catch (error) {
     console.log(error);
   }
-  }
+}
