@@ -38,23 +38,6 @@ export default function Navbar({ pokemon }) {
           />
         </div>
       </nav>
-      <div className='filter'>
-        <span>Type</span>
-        <label htmlFor='bug'>bug</label>
-        <input
-          type='checkbox'
-          id='filter'
-          name='bug'
-          onClick={(e) => HandleFilter(e)}
-        />
-        <label htmlFor='fire'>fire</label>
-        <input
-          type='checkbox'
-          name='fire'
-          id='filter'
-          onClick={(e) => HandleFilter(e)}
-        />
-      </div>
       {modal && (
         <>
           <div className='modal'>
