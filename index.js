@@ -9,24 +9,35 @@ client.on('ready', () => {
 
 client.on("messageCreate", async (message) => {
     const args = message.content.split(" ")
+    const option = args[2];
+    let data;
+    const query = args[1]
     if (args[0] === "-pokemon") {
-        if (args[1]) {
-
-            const query = args[1]
-
+        if (query)  {
             try {
                 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
                 const pokemon = await res.json();
                 console.log(pokemon)
-                const formatedIndex = ("00" + pokemon.id).slice(-3);
-                const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatedIndex}.png`;
-                pokemon.image = image;
+                
+                if(option === "shiny"){
+                    
+                    data = pokemon.sprites.front_shiny;
+                    message.reply({
+                        content: data
+                    })
 
-                message.reply({
-                    content: pokemon.image
+                }else{
+                    
+                    data = pokemon.sprites.front_default
+                 message.reply({
+                    content: data
                 })
+                }
             } catch (err) {
                 console.log(err)
+                message.reply({
+                    content: "aucune image trouvé"
+                })
             }
         } else {
             message.reply({
