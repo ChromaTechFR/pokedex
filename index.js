@@ -1,4 +1,4 @@
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 require('dotenv').config()
@@ -13,25 +13,33 @@ client.on("messageCreate", async (message) => {
     let data;
     const query = args[1]
     if (args[0] === "-pokemon") {
-        if (query)  {
+        if (query) {
             try {
                 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
                 const pokemon = await res.json();
                 console.log(pokemon)
-                
-                if(option === "shiny"){
-                    
+
+                const embed = new MessageEmbed()
+                    .setTitle(pokemon.name)
+                    .setColor('RED')
+
+                if (option === "shiny") {
+
                     data = pokemon.sprites.front_shiny;
-                    message.reply({
-                        content: data
+                    embed.setImage(data)
+
+                    message.channel.send({
+                        embeds: [embed]
                     })
 
-                }else{
-                    
+                } else {
+
                     data = pokemon.sprites.front_default
-                 message.reply({
-                    content: data
-                })
+                    embed.setImage(data)
+
+                    message.channel.send({
+                        embeds: [embed]
+                    })
                 }
             } catch (err) {
                 console.log(err)
