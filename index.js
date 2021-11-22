@@ -8,20 +8,26 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", async (message) => {
-    const args = message.content.split(" ")
-    const option = args[2];
+    const args = message.content.split(" ");
+    const query = args[1]?.toLowerCase();
+    const option = args[2]?.toLowerCase();
     let data;
-    const query = args[1]
     if (args[0] === "-pokemon") {
         if (query) {
             try {
                 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
                 const pokemon = await res.json();
-                console.log(pokemon)
+                
 
                 const embed = new MessageEmbed()
                     .setTitle(pokemon.name)
                     .setColor('RED')
+                    .setDescription('type(s):')
+
+                    pokemon.types.forEach((e)=>{
+                        embed.addField(`${e.slot}`,`${e.type.name}`)
+                    })
+                   
 
                 if (option === "shiny") {
 
